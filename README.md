@@ -31,14 +31,6 @@ A solution to intelligent text parsing for the ONDC innovation hackathon.
 
 ## 💭 How it works <a name = "working"></a>
 
-The bot first extracts the word from the comment and then fetches word definitions, part of speech, example and source from the Oxford Dictionary API.
-
-If the word does not exist in the Oxford Dictionary, the Oxford API then returns a 404 response upon which the bot then tries to fetch results form the Urban Dictionary API.
-
-The bot uses the Pushshift API to fetch comments, PRAW module to reply to comments and Heroku as a server.
-
-The entire bot is written in Python 3.6
-
 ## 🎈 Usage <a name = "usage"></a>
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
