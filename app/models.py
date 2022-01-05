@@ -1,4 +1,4 @@
-from typing import Dict, Optional
+from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel
 
@@ -17,8 +17,8 @@ class BecknResponse(BaseModel):
         timestamp: str
 
     class MessageType(BaseModel):
-        intent: Optional[Dict[Dict[str, any]]]
-        fulfillment: Optional[Dict[Dict[str, any]]]
+        intent: Optional[List[Dict[str, Any]]]
+        fulfillment: Optional[List[Dict[str, Any]]]
 
     context: ContextType
     message: MessageType

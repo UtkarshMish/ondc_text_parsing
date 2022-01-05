@@ -1,4 +1,3 @@
-from numbers import Number
 from typing import Dict, Literal
 
 from pydantic import BaseModel, Field
@@ -6,14 +5,14 @@ from pydantic import BaseModel, Field
 
 class Scalar(BaseModel):
     class Range(BaseModel):
-        min: Number
-        max: Number
+        min: float
+        max: float
 
     type: Literal["CONSTANT", "VARIABLE"] = Field(
         ...,
     )
-    value: Number
-    estimated_value: Number
-    computed_value: Number
+    value: float
+    estimated_value: float
+    computed_value: float
     range: Range
     unit: str

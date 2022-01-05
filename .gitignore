@@ -129,7 +129,8 @@ dmypy.json
 .pyre/
 
 
-
+# Data
+**/*.csv
 
 # frontend react packages
 */node_modules/**/*

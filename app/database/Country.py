@@ -1,6 +1,6 @@
-from pydantic import BaseModel
+from beanie import Document
 
 
-class Country(BaseModel):
-    name:str
-    code:str
+class Country(Document):
+    name: str
+    code: str

@@ -1,21 +1,21 @@
 from datetime import datetime
-from typing import Optional
+from typing import List, Optional
 
 from app.database.meta.Descriptor import Descriptor
 from app.database.meta.Price import Price
-from app.database.Tags import Tags
-from pydantic import BaseModel, Field
+from beanie import Document
+from pydantic import Field
 
 
-class Item(BaseModel):
+class Item(Document):
     id: str = Field(...)
-    parent_item_id: str = Field(...)
+    parent_item_id: Optional[str] = Field(None)
     descriptor: Descriptor = Field(...)
-    category_id: str = Field(...)
+    category_id: Optional[str] = Field(None)
     price: Price = Field(...)
-    location_id: str = Field(...)
+    location_id: Optional[str] = Field(None)
     time: datetime = Field(...)
-    tags: Tags = Field(...)
+    tags: List[str] = Field(...)
     matched: Optional[bool] = Field(None)
     related: Optional[bool] = Field(None)
     recommended: Optional[bool] = Field(None)
