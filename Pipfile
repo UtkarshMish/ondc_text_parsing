@@ -5,11 +5,13 @@ name = "pypi"
 
 [packages]
 flask = {extras = ["async"], version = "*"}
-python-dotenv = "*"
-pydantic = "*"
-indic-nlp-library = "*"
-pycountry = "*"
+motor = {extras = ["srv"], version = "*"}
 beanie = "*"
+pydantic = "*"
+python-dotenv = "*"
+pycountry = "*"
+indic-nlp-library = "*"
+pymongo = {extras = ["srv"], version = "*"}
 
 [dev-packages]
 black = "*"

@@ -84,7 +84,7 @@ def generate_product_country(
     product_datas: List[ProductData],
     category_dict: Dict[str, Category],
     items: List[Item],
-    country_dict: dict[str, Country],
+    country_dict: Dict[str, Country],
 ):
     for product in product_datas:
         discounted_price = product.current_price * (product.discount / 100)
@@ -135,7 +135,7 @@ def generate_product_country(
         generate_countries(country_dict, product)
 
 
-def generate_countries(country_dict: dict[str, Country], product: ProductData):
+def generate_countries(country_dict: Dict[str, Country], product: ProductData):
     for code in product.cod_country.split(","):
         try:
             code = code.strip()
