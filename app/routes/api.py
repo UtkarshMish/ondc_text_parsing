@@ -47,7 +47,7 @@ async def get_products():
             {"$set": {"category": "$category.descriptor.name"}},
         ]
     ).to_list()
-    return {"products": items}
+    return {"products": items, "total": await Item.count()}
 
 
 __all__ = ("api_route",)
