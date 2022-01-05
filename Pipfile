@@ -12,6 +12,7 @@ python-dotenv = "*"
 pycountry = "*"
 indic-nlp-library = "*"
 pymongo = {extras = ["srv"], version = "*"}
+nltk = "*"
 
 [dev-packages]
 black = "*"
