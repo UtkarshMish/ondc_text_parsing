@@ -20,7 +20,7 @@ export default function Products({
 			setIsLoading(false);
 		}
 		fetchData();
-	}, [currentPage]);
+	}, [currentPage, setProducts, setTotal]);
 
 	if (isLoading) {
 		return (
