@@ -19,3 +19,34 @@ class Item(Document):
     matched: Optional[bool] = Field(None)
     related: Optional[bool] = Field(None)
     recommended: Optional[bool] = Field(None)
+
+    @staticmethod
+    async def getItems(page: int = 1):
+        LIMIT = 50
+        OFFSET = LIMIT * (page - 1) if page > 1 else 0
+        return await Item.aggregate(
+            [
+                {"$skip": OFFSET},
+                {"$limit": LIMIT},
+                {
+                    "$lookup": {
+                        "from": "Category",
+                        "localField": "category_id",
+                        "foreignField": "_id",
+                        "as": "category",
+                    }
+                },
+                {"$unwind": {"path": "$category"}},
+                {
+                    "$unset": [
+                        "category_id",
+                        "matched",
+                        "location_id",
+                        "recommended",
+                        "related",
+                        "parent_item_id",
+                    ]
+                },
+                {"$set": {"category": "$category.descriptor.name"}},
+            ]
+        ).to_list()

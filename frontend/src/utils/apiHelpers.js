@@ -10,3 +10,17 @@ export async function getProducts(pageNo = 1) {
 	}
 	return [null, null];
 }
+
+export async function searchProduct(searchString = "") {
+	try {
+		const response = await axios.post("/api/search", { search: searchString });
+		if (response.data?.message?.fulfillment) {
+			const [{ product }, { total }] = response.data.message.fulfillment;
+			return [product, total];
+		}
+	} catch (err) {
+		console.log("error: ", err);
+	}
+
+	return null;
+}

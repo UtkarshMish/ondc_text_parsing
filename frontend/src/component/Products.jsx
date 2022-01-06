@@ -3,9 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProducts } from "../utils/apiHelpers";
 import PageBox from "./PageBox";
-export default function Products() {
-	const [products, setProducts] = useState(null);
-	const [total, setTotal] = useState(null);
+export default function Products({
+	products = [],
+	setProducts,
+	total = 0,
+	setTotal
+}) {
 	const [isLoading, setIsLoading] = useState(true);
 	const currentPage = parseInt(useParams().page || 1);
 	useEffect(() => {
@@ -48,8 +51,9 @@ export default function Products() {
 				height={"inherit"}
 				flexWrap={"wrap"}>
 				{products &&
-					products.map((element) => (
+					products.map((element, idx) => (
 						<Box
+							key={idx}
 							maxWidth={"20rem"}
 							borderWidth="1px"
 							borderRadius="lg"
