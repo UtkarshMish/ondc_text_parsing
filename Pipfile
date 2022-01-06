@@ -4,8 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
+flask = {extras = ["async"], version = "*"}
+motor = {extras = ["srv"], version = "*"}
+beanie = "*"
+pydantic = "*"
 python-dotenv = "*"
+pycountry = "*"
+indic-nlp-library = "*"
+pymongo = {extras = ["srv"], version = "*"}
 
 [dev-packages]
 black = "*"
