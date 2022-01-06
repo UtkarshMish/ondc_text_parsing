@@ -51,3 +51,38 @@ export default function Search() {
     </>
   );
 }
+
+// {/*   <Box
+//     //     width={'20rem'}
+//     //     height={'30rem'}
+//     //     borderRadius={'md'}
+//     //     // border={'1px groove gray'}
+//     //     overflow={'hidden'}
+//     //
+//     //   >
+//     //     <Box>
+//     //       <Image src={card} alt="card-logo" height={'18rem'} />
+//     //     </Box>
+//     //     <Box>
+//     //       <Heading
+//     //         color={'white'}
+//     //         margin={'1rem'}
+//     //         fontWeight={'bold'}
+//     //         size={'md'}
+//     //       >
+//     //         Naruto Uzumaki
+//     //       </Heading>
+//     //       <Text color={'white'} margin={'1rem'}>
+//     //         Matthew is an interior designer living in New York.
+//     //       </Text>
+//     //     </Box>
+//     //     <hr />
+//     //     <Box display={'flex'} justifyContent={'space-between'}>
+//     //       <Text color={'white'} margin={'1rem'} padding={1}>
+//     //         250$
+//     //       </Text>
+//     //       <Text color={'white'} margin={'1rem'} padding={1}>
+//     //         Animation
+//     //       </Text>
+//     //     </Box>
+//     //   </Box> */}
