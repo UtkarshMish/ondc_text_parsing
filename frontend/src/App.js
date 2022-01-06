@@ -1,20 +1,19 @@
-import { ChakraProvider, theme } from '@chakra-ui/react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React from 'react';
-import Error from './component/Error';
-import Home from './component/Home';
+import { ChakraProvider, theme } from "@chakra-ui/react";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./component/Home";
 
 function App() {
-  return (
-    <ChakraProvider theme={theme}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} exact />
-          <Route path="/*" element={<Error />} exact />
-        </Routes>
-      </BrowserRouter>
-    </ChakraProvider>
-  );
+	return (
+		<ChakraProvider theme={theme}>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Home />} exact />
+					<Route path="/:page" element={<Home />} exact />
+				</Routes>
+			</BrowserRouter>
+		</ChakraProvider>
+	);
 }
 
 export default App;
