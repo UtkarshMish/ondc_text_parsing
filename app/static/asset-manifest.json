@@ -1,10 +1,12 @@
 {
   "files": {
-    "main.js": "/static/js/main.902314bd.js",
+    "main.js": "/static/js/main.4194249f.js",
+    "static/media/npci-logo.png": "/static/media/npci-logo.2beb88d1f7f6f53413c7.png",
+    "static/media/logo-ondc-bg.png": "/static/media/logo-ondc-bg.622e071aa768911ac699.png",
     "index.html": "/index.html",
-    "main.902314bd.js.map": "/static/js/main.902314bd.js.map"
+    "main.4194249f.js.map": "/static/js/main.4194249f.js.map"
   },
   "entrypoints": [
-    "static/js/main.902314bd.js"
+    "static/js/main.4194249f.js"
   ]
 }

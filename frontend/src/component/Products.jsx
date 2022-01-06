@@ -1,291 +1,118 @@
-import { Badge, Box, Image } from '@chakra-ui/react';
-import React from 'react';
-import card from '../assets/uzumaki.jpg';
+import { Badge, Box, Image, Spinner } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { getProducts } from "../utils/apiHelpers";
 export default function Products() {
-  return (
-    <Box
-      margin={'2rem'}
-      display={'flex'}
-      justifyContent={'space-evenly'}
-      height={'inherit'}
-      flexWrap={'wrap'}
-    >
-      <Box
-        maxW="sm"
-        borderWidth="1px"
-        borderRadius="lg"
-        overflow="hidden"
-        boxShadow={
-          'rgba(251, 251, 255, 0.75) 0px 2px 5px -1px,rgba(255, 253, 253, 0.3) 0px 1px 3px -1px'
-        }
-        height={'20rem'}
-        // margin={'2rem'}
-      >
-        <Image src={card} alt="card-logo" />
+	const [products, setProducts] = useState(null);
+	const [total, setTotal] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
+	useEffect(() => {
+		async function fetchData() {
+			const [data, size] = await getProducts();
+			setProducts(data);
+			setTotal(size);
+			setIsLoading(false);
+		}
+		fetchData();
+	}, []);
 
-        <Box p="6">
-          <Box display="flex" alignItems="baseline">
-            <Badge borderRadius="full" px="2" colorScheme="teal">
-              Naruto Uzumaki
-            </Badge>
-            <Box
-              color="messenger.100"
-              fontWeight="bold"
-              letterSpacing="wide"
-              fontSize="xs"
-              textTransform="uppercase"
-              ml="2"
-            >
-              baths
-            </Box>
-            <Box
-              fontSize={'sm'}
-              ml={'7rem'}
-              fontWeight={'bold'}
-              letterSpacing={'wide'}
-              color={'messenger.100'}
-            >
-              250$
-            </Box>
-          </Box>
+	if (isLoading) {
+		return (
+			<Box
+				display={"flex"}
+				alignItems={"center"}
+				justifyContent={"center"}
+				marginBlock={20}
+				flexDirection={"column"}>
+				<Spinner
+					thickness="8px"
+					speed="0.55s"
+					emptyColor="gray.200"
+					color="blue.500"
+					size={"xl"}
+					width={"6rem"}
+					height={"6rem"}
+				/>
+			</Box>
+		);
+	}
+	return (
+		<Box
+			margin={"2rem"}
+			display={"flex"}
+			justifyContent={"space-evenly"}
+			height={"inherit"}
+			flexWrap={"wrap"}>
+			{products &&
+				products.map((element) => (
+					<Box
+						maxWidth={"20rem"}
+						borderWidth="1px"
+						borderRadius="lg"
+						overflow="hidden"
+						boxShadow={
+							"rgba(251, 251, 255, 0.75) 0px 2px 5px -1px,rgba(255, 253, 253, 0.3) 0px 1px 3px -1px"
+						}
+						minHeight={"27rem"}
+						margin={2}>
+						<Box display={"flex"} justifyContent={"center"}>
+							<Image
+								src={element.descriptor.images[0]}
+								alt="card-logo"
+								objectFit={"contain"}
+								maxHeight={"30rem"}
+							/>
+						</Box>
 
-          <Box
-            mt="1"
-            fontWeight="semibold"
-            as="h4"
-            lineHeight="tight"
-            // isTruncated
-            color={'messenger.100'}
-          >
-            Matthew is an interior designer living in New York.
-          </Box>
-        </Box>
-      </Box>
-      <Box
-        maxW="sm"
-        borderWidth="1px"
-        borderRadius="lg"
-        overflow="hidden"
-        boxShadow={
-          'rgba(251, 251, 255, 0.75) 0px 2px 5px -1px,rgba(255, 253, 253, 0.3) 0px 1px 3px -1px'
-        }
-        height={'20rem'}
-      >
-        <Image src={card} alt="card-logo" />
+						<Box
+							paddingBlock="6"
+							paddingInline={2}
+							display={"flex"}
+							flexDirection={"column"}>
+							<Box
+								display="flex"
+								alignItems="baseline"
+								justifyContent={"space-between"}>
+								<Box maxWidth={"70%"}>
+									<Badge
+										borderRadius="full"
+										px="2"
+										colorScheme="teal"
+										maxWidth={"100%"}
+										isTruncated>
+										{element.descriptor.name}
+									</Badge>
+									<Box
+										marginBlock={2}
+										color="messenger.100"
+										fontWeight="bold"
+										letterSpacing="wide"
+										fontSize="xs"
+										textTransform="uppercase"
+										ml="2">
+										{element.category}
+									</Box>
+								</Box>
+								<Box
+									fontSize={"sm"}
+									fontWeight={"bold"}
+									letterSpacing={"wide"}
+									color={"messenger.100"}>
+									{element.price.value + " " + element.price.currency}
+								</Box>
+							</Box>
 
-        <Box p="6">
-          <Box display="flex" alignItems="baseline">
-            <Badge borderRadius="full" px="2" colorScheme="teal">
-              Naruto Uzumaki
-            </Badge>
-            <Box
-              color="messenger.100"
-              fontWeight="bold"
-              letterSpacing="wide"
-              fontSize="xs"
-              textTransform="uppercase"
-              ml="2"
-            >
-              baths
-            </Box>
-          </Box>
-
-          <Box
-            mt="1"
-            fontWeight="semibold"
-            as="h4"
-            lineHeight="tight"
-            // isTruncated
-            color={'messenger.100'}
-          >
-            Matthew is an interior designer living in New York.
-          </Box>
-
-          <Box marginTop={3} color={'messenger.100'}>
-            250$
-          </Box>
-        </Box>
-      </Box>
-      <Box
-        maxW="sm"
-        borderWidth="1px"
-        borderRadius="lg"
-        overflow="hidden"
-        boxShadow={
-          'rgba(251, 251, 255, 0.75) 0px 2px 5px -1px,rgba(255, 253, 253, 0.3) 0px 1px 3px -1px'
-        }
-        height={'20rem'}
-      >
-        <Image src={card} alt="card-logo" />
-
-        <Box p="6">
-          <Box display="flex" alignItems="baseline">
-            <Badge borderRadius="full" px="2" colorScheme="teal">
-              Naruto Uzumaki
-            </Badge>
-            <Box
-              color="messenger.100"
-              fontWeight="bold"
-              letterSpacing="wide"
-              fontSize="xs"
-              textTransform="uppercase"
-              ml="2"
-            >
-              baths
-            </Box>
-          </Box>
-
-          <Box
-            mt="1"
-            fontWeight="semibold"
-            as="h4"
-            lineHeight="tight"
-            // isTruncated
-            color={'messenger.100'}
-          >
-            Matthew is an interior designer living in New York.
-          </Box>
-
-          <Box marginTop={3} color={'messenger.100'}>
-            250$
-          </Box>
-        </Box>
-      </Box>
-      <Box
-        maxW="sm"
-        borderWidth="1px"
-        borderRadius="lg"
-        overflow="hidden"
-        boxShadow={
-          'rgba(251, 251, 255, 0.75) 0px 2px 5px -1px,rgba(255, 253, 253, 0.3) 0px 1px 3px -1px'
-        }
-        height={'20rem'}
-      >
-        <Image src={card} alt="card-logo" />
-
-        <Box p="6">
-          <Box display="flex" alignItems="baseline">
-            <Badge borderRadius="full" px="2" colorScheme="teal">
-              Naruto Uzumaki
-            </Badge>
-            <Box
-              color="messenger.100"
-              fontWeight="bold"
-              letterSpacing="wide"
-              fontSize="xs"
-              textTransform="uppercase"
-              ml="2"
-            >
-              baths
-            </Box>
-          </Box>
-
-          <Box
-            mt="1"
-            fontWeight="semibold"
-            as="h4"
-            lineHeight="tight"
-            // isTruncated
-            color={'messenger.100'}
-          >
-            Matthew is an interior designer living in New York.
-          </Box>
-
-          <Box marginTop={3} color={'messenger.100'}>
-            250$
-          </Box>
-        </Box>
-      </Box>
-      <Box
-        maxW="sm"
-        borderWidth="1px"
-        borderRadius="lg"
-        overflow="hidden"
-        boxShadow={
-          'rgba(251, 251, 255, 0.75) 0px 2px 5px -1px,rgba(255, 253, 253, 0.3) 0px 1px 3px -1px'
-        }
-        height={'20rem'}
-      >
-        <Image src={card} alt="card-logo" />
-
-        <Box p="6">
-          <Box display="flex" alignItems="baseline">
-            <Badge borderRadius="full" px="2" colorScheme="teal">
-              Naruto Uzumaki
-            </Badge>
-            <Box
-              color="messenger.100"
-              fontWeight="bold"
-              letterSpacing="wide"
-              fontSize="xs"
-              textTransform="uppercase"
-              ml="2"
-            >
-              baths
-            </Box>
-          </Box>
-
-          <Box
-            mt="1"
-            fontWeight="semibold"
-            as="h4"
-            lineHeight="tight"
-            // isTruncated
-            color={'messenger.100'}
-          >
-            Matthew is an interior designer living in New York.
-          </Box>
-
-          <Box marginTop={3} color={'messenger.100'}>
-            250$
-          </Box>
-        </Box>
-      </Box>
-      <Box
-        maxW="sm"
-        borderWidth="1px"
-        borderRadius="lg"
-        overflow="hidden"
-        boxShadow={
-          'rgba(251, 251, 255, 0.75) 0px 2px 5px -1px,rgba(255, 253, 253, 0.3) 0px 1px 3px -1px'
-        }
-        height={'20rem'}
-      >
-        <Image src={card} alt="card-logo" />
-
-        <Box p="6">
-          <Box display="flex" alignItems="baseline">
-            <Badge borderRadius="full" px="2" colorScheme="teal">
-              Naruto Uzumaki
-            </Badge>
-            <Box
-              color="messenger.100"
-              fontWeight="bold"
-              letterSpacing="wide"
-              fontSize="xs"
-              textTransform="uppercase"
-              ml="2"
-            >
-              baths
-            </Box>
-          </Box>
-
-          <Box
-            mt="1"
-            fontWeight="semibold"
-            as="h4"
-            lineHeight="tight"
-            // isTruncated
-            color={'messenger.100'}
-          >
-            Matthew is an interior designer living in New York.
-          </Box>
-
-          <Box marginTop={3} color={'messenger.100'}>
-            250$
-          </Box>
-        </Box>
-      </Box>
-    </Box>
-  );
+							<Box
+								alignSelf={"flex-end"}
+								mt="1"
+								fontWeight="semibold"
+								as="h4"
+								lineHeight="tight"
+								color={"messenger.100"}>
+								{element.descriptor.short_desc}
+							</Box>
+						</Box>
+					</Box>
+				))}
+		</Box>
+	);
 }
