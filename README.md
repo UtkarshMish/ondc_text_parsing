@@ -61,6 +61,8 @@ For Development, create a .env file with following: \
 1. PORT = `<specify the port number to run app on>`
 2. HOST = `<specify the host to run app on>`
 3. DEBUG = `<to turn debug on for development>`
+4. MONGODB_URI =`<set up mongodb (local or atlas) >`
+5. DB_NAME = `Database Name`
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
